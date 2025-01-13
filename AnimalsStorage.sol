@@ -15,6 +15,8 @@ pragma solidity ^0.8.18;
     
     2. We can store a stack of variables in array, these variables has a type (uint, bytes, address...) and a struct is new type 
        defined by us.
+
+    3. Following code
 */
 contract AnimalsStorage {
 

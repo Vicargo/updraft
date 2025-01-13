@@ -81,11 +81,11 @@
 	},
 	"sources": {
 		"AnimalsStorage.sol": {
-			"keccak256": "0x3f3b4919fb45e16ed2b9b50b875f2b541d2a25253549a5ef9c2589d7c7a3699b",
+			"keccak256": "0xd8120c9fd3a3410e5939b820b41b93bdd91e9296753b531e41300993308ba400",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://748adc1232cb524274e3d77d7f7dbd5d4dca8beafd2043328800b1571bc1e976",
-				"dweb:/ipfs/QmWwZtnnXrPkGjAWRYYfrA3EYeha7W4vtZu5FMmx5wMPB1"
+				"bzz-raw://59f4040f7523f684565984d85270aa54c6a6fc7bc7d4c30146e8fa4e191379c9",
+				"dweb:/ipfs/QmVUT5TVfh6EmGYgKp9T4PdNyXbNA35ES3L97UmM4bD57w"
 			]
 		}
 	},
