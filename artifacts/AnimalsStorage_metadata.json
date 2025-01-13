@@ -1,0 +1,93 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint16",
+						"name": "_age",
+						"type": "uint16"
+					}
+				],
+				"name": "add_animal",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "listOfAnimals",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint16",
+						"name": "age",
+						"type": "uint16"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"AnimalsStorage.sol": "AnimalsStorage"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"AnimalsStorage.sol": {
+			"keccak256": "0x3f3b4919fb45e16ed2b9b50b875f2b541d2a25253549a5ef9c2589d7c7a3699b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://748adc1232cb524274e3d77d7f7dbd5d4dca8beafd2043328800b1571bc1e976",
+				"dweb:/ipfs/QmWwZtnnXrPkGjAWRYYfrA3EYeha7W4vtZu5FMmx5wMPB1"
+			]
+		}
+	},
+	"version": 1
+}
