@@ -80,7 +80,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"UserBalance.sol": "UserBalance"
+			"contracts/UserBalance.sol": "UserBalance"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -94,12 +94,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"UserBalance.sol": {
-			"keccak256": "0x6c3a45f631d423adf034d1d551a574c9fa35971a6e56c50de459d5ef2cc5773d",
+		"contracts/UserBalance.sol": {
+			"keccak256": "0x48de2e54c90063aafc18d22988c25ccfb355ccfb6ac53953e12eee7710e356cf",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://172f0ad7ab5014dea01a6a0578b316c06dca84693d75504135ec81f760b19b7a",
-				"dweb:/ipfs/QmeAE9rkqSQAcRjPXuUtpcPwm5SoLaLvtiYC5r9DT7DXYz"
+				"bzz-raw://9af571dfafbcdcedfcc3d097cb57a4760f5e0e825626378aa9a191ddadb46129",
+				"dweb:/ipfs/QmR66acodu9E98jU5QjpQ5UmwzT9Fx182Jr39GJnLnpqAD"
 			]
 		}
 	},
