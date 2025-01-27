@@ -6,11 +6,11 @@ En Solidity, los modificadores son piezas de código reutilizables que se utiliz
 ----------------------------------------------------
 
 ### Pure
-**Definición:** Una función marcada como pure no puede leer ni modificar el estado de la blockchain.
+**Definición:** Una función marcada como `pure` no puede leer ni modificar el estado de la blockchain.
 
 **Características:**
  - No interactúa con variables de estado (almacenadas en el contrato).
- - No lee información de la blockchain (como block.timestamp o msg.sender).
+ - No lee información de la blockchain (como `block.timestamp` o `msg.sender`).
  - Solo puede operar con parámetros proporcionados o datos locales.
 
 **Uso común:** Realizar cálculos o transformar datos.
@@ -23,7 +23,7 @@ function add(uint a, uint b) public pure returns (uint) {
 ----------------------------------------------------
 
 ### View
-**Definición:** Una función marcada como view puede leer valores del estado de la blockchain pero no puede modificarlos.
+**Definición:** Una función marcada como `view` puede leer valores del estado de la blockchain pero no puede modificarlos.
 
 **Características:**
  - No puede cambiar valores en el contrato.
@@ -42,7 +42,7 @@ function getMyValue() public view returns (uint) {
 ----------------------------------------------------
 
 ### Payable 
-**Definición:** Una función marcada como payable permite recibir ether (o fondos en general) en el contrato.
+**Definición:** Una función marcada como `payable` permite recibir ether (o fondos en general) en el contrato.
 
 **Características:**
  - Sin este modificador, una función no puede aceptar pagos.
@@ -58,11 +58,11 @@ function getMyValue() public view returns (uint) {
 ----------------------------------------------------
 
 ### Immutable
-**Definición:** Las variables marcadas como immutable se inicializan una sola vez (normalmente en el constructor) y no pueden cambiar después.
+**Definición:** Las variables marcadas como `immutable` se inicializan una sola vez (normalmente en el constructor) y no pueden cambiar después.
 
 **Características:**
  - Se utiliza para optimizar variables que son constantes tras la inicialización.
- - Ofrece mayor flexibilidad que constant, ya que permite inicializar el valor en tiempo de ejecución (no solo en la declaración).
+ - Ofrece mayor flexibilidad que `constant`, ya que permite inicializar el valor en tiempo de ejecución (no solo en la declaración).
 
 ```solidity
 uint public immutable startTime;
@@ -106,7 +106,7 @@ function emitEvent(uint value) public {
 
 **Características:**
  - Se utiliza en contratos base para funciones que deben ser personalizables.
- - Si una función no es virtual, no puede ser modificada.
+ - Si una función no es `virtual`, no puede ser modificada.
 
 ```solidity
 contract Base {
@@ -123,8 +123,8 @@ contract Base {
 **Definición:** Indica que una función sobrescribe una versión anterior definida en un contrato base.
 
 **Características:**
- - Se usa junto con funciones virtual.
- - Es obligatorio especificar override para funciones que modifican otras heredadas.
+ - Se usa junto con funciones `virtual`.
+ - Es obligatorio especificar `override` para funciones que modifican otras heredadas.
 
 ```solidity
 contract Derived is Base {
@@ -133,7 +133,3 @@ contract Derived is Base {
     }
 }
 ```
-
-
-
-
