@@ -1,5 +1,279 @@
 # Solidity Basics
 
+## Variables
+
+### Native types
+Los tipos nativos son los tipos básicos incorporados en el lenguaje, como enteros, booleanos, y bytes. Estos son los bloques de construcción más simples para manipular datos.
+
+**boolean (`bool`)**
+ - Representa valores verdadero o falso.
+ - Ocupa solo 1 bit.
+
+```solidity
+bool isActive = true;
+```
+
+**Enteros sin signo (`uint`)**
+- Representa números enteros no negativos (solo positivos y cero).
+- Tamaños disponibles: `uint8`, `uint16`, `uint32`, ..., hasta `uint256` (múltiplos de 8 bits).
+- Por defecto, si usas uint sin especificar tamaño, será `uint256`.
+
+```solidity
+uint age = 25;        // Entero positivo (por defecto, uint256).
+uint16 smallNumber = 100;  // Entero positivo de 16 bits.### Native types
+Los tipos nativos son los tipos básicos incorporados en el lenguaje, como enteros, booleanos, y bytes. Estos son los bloques de construcción más simples para manipular datos.
+
+**boolean (`bool`)**
+ - Representa valores verdadero o falso.
+ - Ocupa solo 1 bit.
+
+```solidity
+bool isActive = true;
+```
+
+**Enteros sin signo (`uint`)**
+- Representa números enteros no negativos (solo positivos y cero).
+- Tamaños disponibles: `uint8`, `uint16`, `uint32`, ..., hasta `uint256` (múltiplos de 8 bits).
+- Por defecto, si usas uint sin especificar tamaño, será `uint256`.
+
+```solidity
+uint age = 25;        // Entero positivo (por defecto, uint256).
+uint16 smallNumber = 100;  // Entero positivo de 16 bits.
+```
+
+**Enteros con signo (`int`)**
+- Representa números enteros positivos y negativos.
+- Tamaños disponibles: `int8`, `int16`, `int32`, ..., hasta `int256` (múltiplos de 8 bits).
+- Por defecto, si usas int sin especificar tamaño, será `int256`.
+
+```solidity
+int balance = -10;  // Entero con signo.
+int256 bigNumber = 123456; 
+```
+
+**Address (`address`)**
+- Representa una dirección de Ethereum (160 bits).
+- Se usa para almacenar la dirección de contratos o cuentas.
+- Tiene funciones útiles como balance (consulta el saldo de una dirección) y transfer (envía Ether).
+
+```solidity
+address owner = 0x1234567890123456789012345678901234567890;
+
+function getBalance() public view returns (uint) {
+    return owner.balance; // Devuelve el saldo de la dirección.
+}
+```
+
+**Bytes (`bytes`)**
+ - Representa secuencias de bytes (arreglos de datos binarios).
+ - Hay dos variantes:
+   1. Bytes fijos: `bytes1`, `bytes2`, ..., hasta `bytes32`.
+   2. Bytes dinámicos: `bytes`.
+
+```solidity
+bytes32 fixedBytes = "Hello, Solidity!";  // Hasta 32 bytes.
+bytes dynamicBytes = "Hello, World!";     // Tamaño flexible.
+```
+
+**String (`string`)** 
+- Representa texto de longitud dinámica.
+- Usa mucho espacio de almacenamiento, así que úsalo solo cuando sea necesario.
+- A diferencia de bytes, no se puede manipular directamente cada carácter individual.
+
+```solidity
+string public greeting = "Hello, Solidity!";
+```
+
+**Enum (`enum`)**
+- Define un conjunto de valores constantes llamados "enumeraciones".
+- Útil para manejar estados finitos.
+
+```solidity
+enum Status { Active, Inactive, Pending }
+
+Status public currentStatus = Status.Active;
+
+function setStatus(Status _status) public {
+    currentStatus = _status;
+}
+```
+
+**Arrays (`[]`)**
+- Representan colecciones de elementos del mismo tipo.
+- Pueden ser estáticos (tamaño fijo) o dinámicos (tamaño variable).
+
+```solidity
+enum Status { Active, Inactive, Pending }
+
+Status public currentStatus = Status.Active;
+
+function setStatus(Status _status) public {
+    currentStatus = _status;
+}
+```
+
+**Structs (`User`)**
+- Permiten definir un conjunto de variables agrupadas bajo un solo nombre.
+  
+```solidity
+struct User {
+    string name;
+    uint age;
+}
+
+User public user;
+
+function createUser(string memory _name, uint _age) public {
+    user = User(_name, _age);
+}
+```
+
+**Mappings (`mapping`)**
+- Representa estructuras de datos de tipo `clave-valor`.
+- Las claves pueden ser de cualquier tipo básico, pero no pueden ser iteradas.
+
+```solidity
+mapping(address => uint) public balances;
+
+function deposit() public payable {
+    balances[msg.sender] += msg.value; // Actualiza el saldo del remitente.
+}
+```
+```
+
+**Enteros con signo (`int`)**
+- Representa números enteros positivos y negativos.
+- Tamaños disponibles: `int8`, `int16`, `int32`, ..., hasta `int256` (múltiplos de 8 bits).
+- Por defecto, si usas int sin especificar tamaño, será `int256`.
+
+```solidity
+int balance = -10;  // Entero con signo.
+int256 bigNumber = 123456; 
+```
+
+**Address (`address`)**
+- Representa una dirección de Ethereum (160 bits).
+- Se usa para almacenar la dirección de contratos o cuentas.
+- Tiene funciones útiles como balance (consulta el saldo de una dirección) y transfer (envía Ether).
+
+```solidity
+address owner = 0x1234567890123456789012345678901234567890;
+
+function getBalance() public view returns (uint) {
+    return owner.balance; // Devuelve el saldo de la dirección.
+}
+```
+
+**Bytes (`bytes`)**
+ - Representa secuencias de bytes (arreglos de datos binarios).
+ - Hay dos variantes:
+   1. Bytes fijos: `bytes1`, `bytes2`, ..., hasta `bytes32`.
+   2. Bytes dinámicos: `bytes`.
+
+```solidity
+bytes32 fixedBytes = "Hello, Solidity!";  // Hasta 32 bytes.
+bytes dynamicBytes = "Hello, World!";     // Tamaño flexible.
+```
+
+**String (`string`)** 
+- Representa texto de longitud dinámica.
+- Usa mucho espacio de almacenamiento, así que úsalo solo cuando sea necesario.
+- A diferencia de bytes, no se puede manipular directamente cada carácter individual.
+
+```solidity
+string public greeting = "Hello, Solidity!";
+```
+
+**Enum (`enum`)**
+- Define un conjunto de valores constantes llamados "enumeraciones".
+- Útil para manejar estados finitos.
+
+```solidity
+enum Status { Active, Inactive, Pending }
+
+Status public currentStatus = Status.Active;
+
+function setStatus(Status _status) public {
+    currentStatus = _status;
+}
+```
+
+**Arrays (`[]`)**
+- Representan colecciones de elementos del mismo tipo.
+- Pueden ser estáticos (tamaño fijo) o dinámicos (tamaño variable).
+
+```solidity
+enum Status { Active, Inactive, Pending }
+
+Status public currentStatus = Status.Active;
+
+function setStatus(Status _status) public {
+    currentStatus = _status;
+}
+```
+
+**Structs (`User`)**
+- Permiten definir un conjunto de variables agrupadas bajo un solo nombre.
+  
+```solidity
+struct User {
+    string name;
+    uint age;
+}
+
+User public user;
+
+function createUser(string memory _name, uint _age) public {
+    user = User(_name, _age);
+}
+```
+
+**Mappings (`mapping`)**
+- Representa estructuras de datos de tipo `clave-valor`.
+- Las claves pueden ser de cualquier tipo básico, pero no pueden ser iteradas.
+
+```solidity
+mapping(address => uint) public balances;
+
+function deposit() public payable {
+    balances[msg.sender] += msg.value; // Actualiza el saldo del remitente.
+}
+```
+  
+## Data Locations
+The Solidity compiler knows how to handle the memory of primitive types. However, for strings, arrays, structs, and mappings, we need to specify the data location. Solidity provides three data locations: memory, calldata, and storage.
+
+**Memory (`memory`)** 
+
+Commonly used to declare temporary variables that can be modified during execution.
+
+```solidity
+function concatenateAlias(string memory aliasName) internal pure returns (string memory) {
+   return string(abi.encodePacked("@", aliasName));
+}
+```
+
+**Calldata (`calldata`)**
+
+Immutable and is used to handle input parameters for functions. More efficient in term of gas, it cant be modified. 
+
+```solidity
+function printMessage(string calldata message) public pure returns (string memory) {
+    return message;
+}
+```
+
+**Storage (`storage`)**  
+Persistent and used for variables declared at the contract scope, which are implicitly assigned to storage by default. 
+
+```solidity
+string public storedName;
+
+function setName(string memory name) public {
+    storedName = name;
+}
+```
+
 ## Modifiers
 En Solidity, los modificadores son piezas de código reutilizables que se utilizan para alterar el comportamiento de las funciones de manera consistente y sencilla. Se colocan como etiquetas en las funciones y sirven para agregar restricciones o ejecutar lógica adicional antes o después de que se ejecute la lógica principal de la función.
 
