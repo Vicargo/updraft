@@ -1,6 +1,15 @@
 
 # Solidity Basics
 
+## Visibility: 
+In Solidity, functions and variables can have one of these four visibility specifiers:
+
+* 🌎 **`public`**: accessible from both inside the contract and from external contracts
+* 🏠 **`private`**: accessible only within the _current contract_. It does not hide a value but only restricts its access.
+* 🌲 **`external`**: used only for *_functions_*. Visible only from *_outside_* the contract.
+* 🏠🏠 **`internal`**: accessible by the current contract and any contracts *_derived_* from it.
+
+
 ## Modifiers
 In Solidity, modifiers are reusable pieces of code used to alter the behavior of functions in a consistent and simple way. They are placed as labels on functions and are used to add restrictions or execute additional logic before or after the main logic of the function is executed.
 
