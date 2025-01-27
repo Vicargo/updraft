@@ -1,6 +1,161 @@
 
 # Solidity Basics
 
+## Variables
+
+### Native types
+Native types are the basic types built into the Solidity language, such as integers, booleans, and bytes. These are the simplest building blocks for manipulating data.
+
+**Boolean (`bool`)**
+ - Represents true or false values.
+ - Occupies only 1 bit.
+
+```solidity
+bool isActive = true;
+```
+
+**Unsigned Integers (`uint`)**
+- Represents non-negative integers (only positive values and zero).
+- Available sizes: `uint8`, `uint16`, `uint32`, ..., up to `uint256` (multiples of 8 bits).
+- By default, using `uint` without specifying the size makes it `uint256`.
+
+```solidity
+uint age = 25;        // Positive integer (default is uint256).
+uint16 smallNumber = 100;  // 16-bit positive integer.
+```
+
+**Signed Integers (`int`)**
+- Represents integers, both positive and negative.
+- Available sizes: `int8`, `int16`, `int32`, ..., up to `int256` (multiples of 8 bits).
+- By default, using `int` without specifying the size makes it `int256`.
+
+```solidity
+int balance = -10;  // Signed integer.
+int256 bigNumber = 123456; 
+```
+
+**Address (`address`)**
+- Represents an Ethereum address (160 bits).
+- Used to store the address of contracts or accounts.
+- Includes useful functions like `balance` (to check the balance of an address) and `transfer` (to send Ether).
+
+```solidity
+address owner = 0x1234567890123456789012345678901234567890;
+
+function getBalance() public view returns (uint) {
+    return owner.balance; // Returns the balance of the address.
+}
+```
+
+**Bytes (`bytes`)**
+ - Represents sequences of bytes (binary data arrays).
+ - Two variants:
+   1. Fixed bytes: `bytes1`, `bytes2`, ..., up to `bytes32`.
+   2. Dynamic Bytes: `bytes`.
+
+```solidity
+bytes32 fixedBytes = "Hello, Solidity!";  // Up to 32 bytes.
+bytes dynamicBytes = "Hello, World!";     // Flexible size.
+```
+
+**String (`string`)** 
+- Represents dynamically-sized text.
+- Uses significant storage space, so use it only when necessary.
+- Unlike `bytes`, you cannot directly manipulate each character.
+
+```solidity
+string public greeting = "Hello, Solidity!";
+```
+
+**Enum (`enum`)**
+- Defines a set of constant values called "enumerations."
+- Useful for managing finite states.
+
+```solidity
+enum Status { Active, Inactive, Pending }
+
+Status public currentStatus = Status.Active;
+
+function setStatus(Status _status) public {
+    currentStatus = _status;
+}
+```
+
+**Arrays (`[]`)**
+- Represents collections of elements of the same type.
+- Can be static (fixed size) or dynamic (variable size).
+
+```solidity
+uint[3] fixedArray = [1, 2, 3]; // Fixed-size array.
+uint[] dynamicArray;           // Dynamic-size array.
+
+function addElement(uint element) public {
+    dynamicArray.push(element); // Add an element to the dynamic array.
+}
+```
+
+**Structs (`User`)**
+- Allows grouping a set of variables under a single name.
+  
+```solidity
+struct User {
+    string name;
+    uint age;
+}
+
+User public user;
+
+function createUser(string memory _name, uint _age) public {
+    user = User(_name, _age);
+}
+```
+
+**Mappings (`mapping`)**
+- Represents key-value pair data structures.
+- Keys can be any basic type, but mappings cannot be iterated.
+
+```solidity
+mapping(address => uint) public balances;
+
+function deposit() public payable {
+    balances[msg.sender] += msg.value; // Updates the sender's balance.
+}
+```
+  
+## Data Locations
+The Solidity compiler knows how to handle the memory of primitive types. However, for strings, arrays, structs, and mappings, we need to specify the data location. Solidity provides three data locations: memory, calldata, and storage.
+
+**Memory (`memory`)** 
+
+Commonly used to declare temporary variables that can be modified during execution.
+
+```solidity
+function concatenateAlias(string memory aliasName) internal pure returns (string memory) {
+   return string(abi.encodePacked("@", aliasName));
+}
+```
+
+**Calldata (`calldata`)**
+
+Immutable and is used to handle input parameters for functions. More efficient in term of gas, it cant be modified. 
+
+```solidity
+function printMessage(string calldata message) public pure returns (string memory) {
+    return message;
+}
+```
+
+**Storage (`storage`)**  
+Persistent and used for variables declared at the contract scope, which are implicitly assigned to storage by default. 
+
+```solidity
+string public storedName;
+
+function setName(string memory name) public {
+    storedName = name;
+}
+```
+
 ## Visibility: 
 In Solidity, functions and variables can have one of these four visibility specifiers:
 
