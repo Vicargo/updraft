@@ -330,5 +330,6 @@ To send funds using the `call` function, we convert the address of the receiver 
 The `call` function returns two variables: a boolean for success or failure, and a byte object which stores returned data if any.
 
 > 👀❗**IMPORTANT**:
+> 
 > `call` is the recommended way of sending and receiving Ethereum or other blockchain native tokens.
 
