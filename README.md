@@ -1,5 +1,6 @@
 
 # Solidity Basics
+This document contains notes from [Patrick Collins](https://www.youtube.com/c/PatrickCollins) course [Solidity Smart Contract Development](https://updraft.cyfrin.io/courses/solidity) hosted in Updraft.
 
 ## Variables
 
@@ -156,6 +157,8 @@ function setName(string memory name) public {
 }
 ```
 
+----------------------------------------------------
+
 ## Visibility: 
 In Solidity, functions and variables can have one of these four visibility specifiers:
 
@@ -164,11 +167,11 @@ In Solidity, functions and variables can have one of these four visibility speci
 * 🌲 **`external`**: used only for *_functions_*. Visible only from *_outside_* the contract.
 * 🏠🏠 **`internal`**: accessible by the current contract and any contracts *_derived_* from it.
 
+----------------------------------------------------
 
 ## Modifiers
 In Solidity, modifiers are reusable pieces of code used to alter the behavior of functions in a consistent and simple way. They are placed as labels on functions and are used to add restrictions or execute additional logic before or after the main logic of the function is executed.
 
-----------------------------------------------------
 
 ### Pure
 **Definition:** A function marked as `pure` cannot read or modify the state of the blockchain.
@@ -185,7 +188,6 @@ function add(uint a, uint b) public pure returns (uint) {
     return a + b;
 }
 ```
-----------------------------------------------------
 
 ### View
 **Definition:** A function marked as `view` can read values from the blockchain state but cannot modify them.
@@ -204,7 +206,7 @@ function getMyValue() public view returns (uint) {
     return myValue;
 }
 ```
-----------------------------------------------------
+
 
 ### Payable 
 **Definition:** A function marked as `payable` allows receiving ether (or funds in general) into the contract.
@@ -220,7 +222,7 @@ function getMyValue() public view returns (uint) {
       require(msg.value > 0, "Debe enviar fondos mayores a 0"); // Asegura que se envíen fondos.
   }
 ```
-----------------------------------------------------
+
 
 ### Immutable
 **Definition:** Variables marked as `immutable` are initialized only once (usually in the constructor) and cannot be changed afterwards.
@@ -236,7 +238,7 @@ constructor() {
     startTime = block.timestamp; // Initialized in the constructor.
 }
 ```
-----------------------------------------------------
+
 
 ### Anonymous
 **Definition:** Used in events to make them anonymous, removing their signature from the blockchain logs.
@@ -248,7 +250,6 @@ constructor() {
 ```solidity
 event MyEvent(uint indexed value) anonymous;
 ```
-----------------------------------------------------
 
 ### Indexed
 **Definition:** Used in events to allow certain parameters to be indexed and searchable in the blockchain logs.
@@ -264,7 +265,7 @@ function emitEvent(uint value) public {
     emit MyEvent(value, msg.sender);
 }
 ```
-----------------------------------------------------
+
 
 ### Virtual
 **Definition:** Allows a function to be overridden in derived contracts.
@@ -281,9 +282,6 @@ contract Base {
 }
 ```
 
-----------------------------------------------------
-
-
 ### Override
 **Definition:** Indicates that a function overrides a previous version defined in a base contract.
 
@@ -299,6 +297,15 @@ contract Derived is Base {
 }
 ```
 
+## Send Native crypto from a contract
+We can use three different methods to send native crypto from one account to another: `transfer`, `send` and `call`.
+
+### Transfer
+The `transfer` function is the simplest way to send Ether to a recipient address:
+
+```solidity
+payable(msg.sender).transfer(amount); // the current contract sends the Ether amount to the msg.sender
+```
 
 
 
